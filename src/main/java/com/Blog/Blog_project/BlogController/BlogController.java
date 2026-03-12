@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -18,7 +19,7 @@ public class BlogController {
 
     @GetMapping("/")
     public String viewHomePage( Model model){
-    model.addAttribute("posts", postRepo.findAll());
+    model.addAttribute("listPosts", postRepo.findAll());
     return "index";
     }
 
@@ -33,5 +34,18 @@ public class BlogController {
         postRepo.save(post);
         return "redirect:/";
     }
+
+    @GetMapping("/edit/{id}")
+    public String editPost(@PathVariable int id, Model  model){
+     model.addAttribute("post" , postRepo.findById(id));
+     return "edit_post";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String DeletePost(@PathVariable int id){
+        postRepo.deleteById(id);
+        return "redirect:/";
+    }
+
 }
 

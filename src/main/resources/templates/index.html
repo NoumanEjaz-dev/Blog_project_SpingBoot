@@ -16,18 +16,18 @@
         </div>
 
 <!--Input Field for Post ID and Action Buttons -->
-    <div class="card p-3 mb-4">
-        <h5>Update or Delete a Post by ID</h5>
-    </div>
-        <div class="row g-2">
-            <div class="col-md-4">
-                <input type="number" id="postIdInput" class="form-control" placeholder="Enter Post ID">
-            </div>
-            <div class="col-md-2">
-                <button onclick="editPost()" class="btn btn-primary w-100">Edit Post</button>
-            </div>
-            <div class="col-md-2">
-                <button onclick="deletePost()" class="btn btn-danger w-130">Delete Post</button>
+        <div class="card p-3 mb-4">
+            <h5>Update or Delete a Post by ID</h5>
+            <div class="row g-2">
+                <div class="col-md-4">
+                    <input type="number" id="postIdInput" class="form-control" placeholder="Enter Post ID">
+                </div>
+                <div class="col-md-2">
+                    <button onclick="editPost()" class="btn btn-primary w-100">Edit Post</button>
+                </div>
+                <div class="col-md-2">
+                    <button onclick="deletePost()" class="btn btn-danger w-130">Delete Post</button>
+                </div>
             </div>
         </div>
     </div>
@@ -56,22 +56,23 @@
 
     <script>
     function editPost() {
-        const id = document.getElementByID("postIdInput").value;
+        const id = document.getElementById("postIdInput").value;
     if(id){
-    window.location.href="/edit/" + id;
+        window.location.href="/edit/" + id;
         }
         else{
         alert("Please enter a valid Post ID");
         }
 
-          function deletePost() {
-        const id = document.getElementById("postIdInput").value;
-        if (id && confirm("Are you sure you want to delete post ID " + id + "?")) {
+    }
+
+     function deletePost() {
+           const id = document.getElementById("postIdInput").value;
+      if (id && confirm("Are you sure you want to delete post ID " + id + "?")) {
             window.location.href = "/delete/" + id;
         } else {
             alert("Please enter a valid Post ID.");
         }
-    }
     }
 
 
